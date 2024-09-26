@@ -21,16 +21,22 @@
                         <div class="col-lg-6 mt-5">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Forget Password</h1>
                                 </div>
-                                <form method="POST" action="{{route('auth.user.login')}}"  class="user">
+                                @if(!$id)
+                                <form method="POST" action="{{route('auth.user.send.email')}}" class="user">
                                     @csrf
-                                    <x-auth-form />
+                                    <x-auth-form type="forget_password" buttonName="Update password" />
                                 </form>
+                                @else
+                                <form method="POST" action="{{route('auth.user.update.password', ['id'=> $id, 'token' => $token])}}" class="user">
+                                    @csrf
+                                    <x-auth-form type="update_password" buttonName="Update password" />
+                                </form>
+                                @endif
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small mx-4" href="{{route('auth.registration')}}">Create an Account!</a> 
-                                    <a class="small" href="{{route('auth.user.forget.password')}}">Forget password</a>
+                                    <a class="small mx-4" href="/">Go back</a> 
                                 </div>
                             </div>
                         </div>

@@ -20,8 +20,12 @@
                         </div>
                         <form class="user" method="POST" action="{{route('auth.user.register')}}">
                             @csrf
-                            <x-auth-form type="registration" buttonName="Create Account"  />                            
+                            <x-auth-form type="registration" buttonName="Create Account" />
                         </form>
+                        <hr />
+                        <div class="text-center">
+                            <a class="small mx-4" href="/">Already a member</a>
+                        </div>
                     </div>
                 </div>
             </div>
